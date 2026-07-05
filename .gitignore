@@ -1,0 +1,4 @@
+# This file tells Git to NEVER upload your secret keys to GitHub
+.env
+__pycache__/
+*.pyc
