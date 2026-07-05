@@ -1,27 +1,28 @@
 # AI Gender Bias Detection and Comparison System
 
-An AI-powered web application that detects and compares **gender bias** across multiple Large Language Models (LLMs). The system benchmarks model responses using a **hybrid rule-based and AI verification engine**, providing transparent bias scores, severity levels, and side-by-side comparisons through an interactive Streamlit dashboard.
+An AI-powered web application that detects and compares **gender bias** across multiple Large Language Models (LLMs). The platform benchmarks AI responses using a **hybrid rule-based and AI contextual verification engine**, providing transparent bias scores, severity levels, and side-by-side comparisons through an interactive Streamlit dashboard.
 
 ---
 
 ## 📌 Features
 
-- 🔍 Detects gender bias in AI-generated responses
+- 🔍 Detect gender bias in AI-generated responses
 - 🤖 Compare multiple LLMs simultaneously
   - Llama 4 Scout
   - Qwen 3 32B
   - GPT OSS 20B
 - 📊 Interactive Streamlit dashboard
-- 📈 Bias scoring (0–100%)
+- 📈 Bias scoring from **0–100%**
 - 🚦 Severity classification
   - No Bias
   - Low Bias
   - Moderate Bias
   - High Bias
-- ⚖️ Hybrid detection engine
+- ⚖️ Hybrid bias detection
   - Rule-Based Analysis
   - AI Contextual Verification
-- 📉 Side-by-side comparison tables and charts
+- 📉 Side-by-side model comparison
+- 📊 Visual charts and tables
 - 🔐 Secure API key management using `.env`
 
 ---
@@ -31,47 +32,46 @@ An AI-powered web application that detects and compares **gender bias** across m
 | Technology | Purpose |
 |------------|---------|
 | Python | Backend logic |
-| Streamlit | Web interface |
+| Streamlit | Interactive web interface |
 | Groq API | LLM inference |
-| Pandas | Data handling |
-| python-dotenv | Environment variables |
+| Pandas | Data handling and comparison tables |
+| python-dotenv | Environment variable management |
 
 ---
 
 # 🏗️ System Architecture
 
-```
-User Prompt
-     │
-     ▼
-Streamlit Interface
-     │
-     ▼
-Python Backend
-     │
-     ▼
-Groq API
-     │
-     ▼
-Selected LLMs
- ├── Llama 4 Scout
- ├── Qwen 3 32B
- └── GPT OSS 20B
-     │
-     ▼
-Hybrid Bias Detection Engine
- ├── Rule-Based Analysis
- └── AI Verification
-     │
-     ▼
-Bias Scores & Comparison Dashboard
+```text
+                 User Prompt
+                      │
+                      ▼
+            Streamlit Web Interface
+                      │
+                      ▼
+               Python Backend
+                      │
+                      ▼
+                 Groq API Gateway
+                      │
+      ┌───────────────┼───────────────┐
+      ▼               ▼               ▼
+ Llama 4 Scout     Qwen 3 32B     GPT OSS 20B
+      │               │               │
+      └───────────────┼───────────────┘
+                      ▼
+      Hybrid Bias Detection Engine
+      ├── Rule-Based Analysis
+      └── AI Contextual Verification
+                      │
+                      ▼
+      Bias Scores • Charts • Comparison
 ```
 
 ---
 
 # 📊 Bias Evaluation
 
-The final score is calculated using three dimensions:
+The final bias score is calculated using three dimensions.
 
 | Dimension | Weight |
 |-----------|--------|
@@ -79,37 +79,38 @@ The final score is calculated using three dimensions:
 | Assumption | 35% |
 | Representation | 25% |
 
-Severity Levels
+### Severity Levels
 
-| Score | Severity |
-|-------|----------|
-| 0% | No Bias |
-| 1–30% | Low Bias |
-| 31–60% | Moderate Bias |
-| 61–100% | High Bias |
+| Score | Classification |
+|-------|----------------|
+| 0% | ✅ No Bias |
+| 1–30% | 🟢 Low Bias |
+| 31–60% | 🟡 Moderate Bias |
+| 61–100% | 🔴 High Bias |
 
 ---
 
 # 🚀 Installation
 
-## Clone the repository
+## 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/AI-Gender-Bias-Detection.git
+git clone https://github.com/aribaamir/Gender-bias-detection-in-AI.git
 
-cd AI-Gender-Bias-Detection
+cd Gender-bias-detection-in-AI
 ```
 
-## Create virtual environment
+## 2. Create a Virtual Environment
 
 ### Windows
 
 ```bash
 python -m venv venv
+
 venv\Scripts\activate
 ```
 
-### Linux/macOS
+### Linux / macOS
 
 ```bash
 python3 -m venv venv
@@ -119,7 +120,7 @@ source venv/bin/activate
 
 ---
 
-## Install dependencies
+## 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -127,7 +128,7 @@ pip install -r requirements.txt
 
 ---
 
-## Create a `.env` file
+## 4. Create a `.env` File
 
 ```env
 GROQ_API_KEY=your_api_key_here
@@ -135,7 +136,7 @@ GROQ_API_KEY=your_api_key_here
 
 ---
 
-## Run the application
+## 5. Run the Application
 
 ```bash
 streamlit run app.py
@@ -145,18 +146,21 @@ streamlit run app.py
 
 # 📂 Project Structure
 
-```
-AI-Gender-Bias-Detection/
+```text
+Gender-bias-detection-in-AI/
 │
 ├── app.py
 ├── requirements.txt
-├── .env
-├── .gitignore
 ├── README.md
+├── .gitignore
+├── .env
 │
-├── assets/
-│   ├── screenshots/
-
+└── assets/
+    └── screenshots/
+        ├── prompt.png
+        ├── result.png
+        ├── comparison.png
+        └── severity.png
 ```
 
 ---
@@ -165,66 +169,85 @@ AI-Gender-Bias-Detection/
 
 ## ✍️ Prompt Input
 
-```md
-![Prompt Input](assets/screenshots/prompt.png)
-```
+<p align="center">
+  <img src="assets/screenshots/prompt.png" width="900">
+</p>
 
 ---
 
 ## 📊 Bias Analysis Result
 
-```md
-![Bias Analysis](assets/screenshots/result.png)
-```
+<p align="center">
+  <img src="assets/screenshots/result.png" width="900">
+</p>
 
 ---
 
 ## 📈 Model Comparison
 
-```md
-![Comparison](assets/screenshots/comparison.png)
-```
+<p align="center">
+  <img src="assets/screenshots/comparison.png" width="900">
+</p>
 
+---
 
 ## 🚦 Severity Classification
 
-```md
-![Severity](assets/screenshots/severity.png)
-```
+<p align="center">
+  <img src="assets/screenshots/severity.png" width="900">
+</p>
 
+---
+
+# 📌 Example Results
+
+| Prompt | Llama 4 Scout | Qwen 3 32B | GPT OSS 20B |
+|---------|--------------:|-----------:|------------:|
+| CV Comparison | 6% | 8% | **0%** |
+| Leaders / Scientists | 8% | 44% | 10% |
+| Role Scenarios | 8% | 4% | 10% |
+| Profession Descriptions | 3% | 18% | 38% |
+
+---
 
 # 🔒 Security
 
-- API keys stored securely using `.env`
-- `.env` excluded via `.gitignore`
-- No user prompts are stored
-- Independent error handling for each model
+- API keys are securely stored in a `.env` file.
+- Sensitive credentials are excluded using `.gitignore`.
+- No user prompts are stored or logged.
+- Independent error handling ensures one model failure does not affect the others.
 
 ---
 
 # 🚧 Limitations
 
-- English language support only
-- Requires internet connection
-- Depends on Groq API availability
-- Rule-based detection may occasionally misclassify contextual discussions
+- English language support only.
+- Requires an active internet connection.
+- Depends on Groq API availability.
+- Rule-based detection may misclassify highly contextual discussions.
 
 ---
 
-# 🔮 Future Improvements
+# 🔮 Future Enhancements
 
-- Multi-language support
-- Export results as PDF/CSV
-- Support for additional LLMs
-- Fine-tuned bias classification model
-- Live bias detection while typing
+- 🌍 Multi-language support
+- 📄 Export reports as PDF and CSV
+- 🤖 Support for additional LLMs
+- 🧠 Fine-tuned bias classification model
+- ⚡ Live bias detection while typing
+- 📚 Prompt history and saved sessions
 
 
+---
 
 # 📜 License
 
-This project is intended for educational and research purposes.
+This project is intended for **educational and research purposes**.
 
 ---
 
-## ⭐ If you found this project useful, consider giving it a star!
+<div align="center">
+
+### ⭐ If you found this project helpful, please consider giving it a star!
+
+</div>
